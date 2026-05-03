@@ -1,75 +1,78 @@
 # YOLOv8 Electronic Component Detection
-**Sistem deteksi dan penghitungan komponen elektronik secara realtime menggunakan YOLOv8 dengan antarmuka GUI berbasis PyQt5.**
-## Tentang Project
 
-Project ini merupakan tugas akhir mata kuliah **Praktik Computer Vision** yang bertujuan membangun sistem klasifikasi komponen elektronik secara otomatis menggunakan kamera. Sistem ini mampu mendeteksi dan menghitung komponen elektronik secara **realtime** tanpa perlu identifikasi manual.
+**A realtime electronic component detection and counting system using YOLOv8 with a PyQt5-based GUI.**
 
-### Latar Belakang
 
-Proses identifikasi komponen elektronik seperti resistor, kapasitor, transistor, dan IC sering kali dilakukan secara manual yang memerlukan ketelitian tinggi dan berpotensi menimbulkan kesalahan. Sistem ini hadir sebagai solusi untuk meningkatkan efisiensi dan akurasi dalam proses pembelajaran maupun praktikum elektronika.
 
 ---
 
-## Fitur
+## About the Project
 
-- Realtime Detection — Deteksi komponen secara langsung melalui kamera
-- Component Counter — Menghitung jumlah setiap komponen dari snapshot kamera
-- GUI PyQt5 — Antarmuka yang mudah digunakan dengan 2 tab (Realtime & Counter)
-- Bounding Box — Visualisasi deteksi dengan kotak pembatas berwarna
-- Multi-Camera Support — Mendukung pemilihan kamera yang terhubung
+This project is the final assignment for the **Computer Vision Practicum** course, aimed at building an automatic electronic component classification system using a camera. The system is capable of detecting and counting electronic components in **realtime** without manual identification.
+
+### Background
+
+The process of identifying electronic components such as resistors, capacitors, transistors, and ICs is often done manually, requiring high precision and potentially leading to errors. This system was developed as a solution to improve efficiency and accuracy in electronics learning and practicum activities.
 
 ---
 
-## Komponen yang Dapat Dideteksi
+## Features
 
-| No | Komponen   | Jumlah Instance |
-|----|------------|----------------|
-| 1  | Capacitor  | 2.803          |
-| 2  | IC         | 2.783          |
-| 3  | LED        | 2.791          |
-| 4  | Resistor   | 2.774          |
-| 5  | Transistor | 2.856          |
+- Realtime Detection — Detect components directly through a camera feed
+- Component Counter — Count the number of each component from a camera snapshot
+- PyQt5 GUI — Easy-to-use interface with 2 tabs (Realtime & Counter)
+- Bounding Box — Detection visualization with colored bounding boxes
+- Multi-Camera Support — Supports selection of connected cameras
+
+---
+
+## Detectable Components
+
+| No | Component  | Number of Instances |
+|----|------------|---------------------|
+| 1  | Capacitor  | 2,803               |
+| 2  | IC         | 2,783               |
+| 3  | LED        | 2,791               |
+| 4  | Resistor   | 2,774               |
+| 5  | Transistor | 2,856               |
 
 ---
 
 ## Demo Video
 
-[Klik disini untuk melihat demo aplikasi](https://drive.google.com/file/d/1H69XXpEX6p_C0FJvo_hS6dOoXpTJWQel/view?usp=sharing)
+[Click here to watch the application demo](https://drive.google.com/file/d/1H69XXpEX6p_C0FJvo_hS6dOoXpTJWQel/view?usp=sharing)
 
 
-## Dataset
 
-Dataset dikumpulkan secara mandiri menggunakan kamera dan dipreprocessing menggunakan **Roboflow**.
+---
 
-**Download Dataset:** [Google Drive](https://drive.google.com/your-dataset-link) *(ganti dengan link dataset kamu)*
+### Dataset Details
 
-### Detail Dataset
-
-| Keterangan         | Jumlah            |
+| Description        | Amount            |
 |--------------------|-------------------|
-| Total Gambar       | 795               |
-| Training Set       | 597 gambar        |
-| Validation Set     | 132 gambar        |
-| Testing Set        | 66 gambar         |
-| Setelah Augmentasi | 1.989 gambar (3x) |
-| Jumlah Kelas       | 5                 |
+| Total Images       | 795               |
+| Training Set       | 597 images        |
+| Validation Set     | 132 images        |
+| Testing Set        | 66 images         |
+| After Augmentation | 1,989 images (3x) |
+| Number of Classes  | 5                 |
 
-### Preprocessing dan Augmentasi (Roboflow)
+### Preprocessing and Augmentation (Roboflow)
 
 - Flip: Horizontal and Vertical
-- Rotation: Between -15 and +15 degree
+- Rotation: Between -15 and +15 degrees
 - Saturation: Between -25% and +25%
 - Image Size: 640x640
 
 ---
 
-## Hasil Model
+## Model Results
 
-Model dilatih menggunakan **YOLOv8** dengan **200 epoch** dan ukuran gambar **640x640**.
+The model was trained using **YOLOv8** with **200 epochs** and an image size of **640x640**.
 
-### Performa Per Kelas (mAP@0.5)
+### Performance Per Class (mAP@0.5)
 
-| Kelas           | Precision | mAP@0.5  |
+| Class           | Precision | mAP@0.5  |
 |-----------------|-----------|----------|
 | Capacitor       | 0.98      | 0.950    |
 | IC              | 0.95      | 0.949    |
@@ -78,7 +81,7 @@ Model dilatih menggunakan **YOLOv8** dengan **200 epoch** dan ukuran gambar **64
 | Transistor      | 0.98      | 0.951    |
 | **All Classes** | -         | **0.849**|
 
-### Ringkasan Metrik
+### Metrics Summary
 
 - mAP@0.5 (all classes): 0.849
 - Recall (all classes): 0.96
@@ -87,7 +90,7 @@ Model dilatih menggunakan **YOLOv8** dengan **200 epoch** dan ukuran gambar **64
 
 ---
 
-## Struktur Folder
+## Folder Structure
 
 ```
 yolov8-electronic-component-detection/
@@ -114,30 +117,30 @@ yolov8-electronic-component-detection/
 
 ---
 
-## Instalasi
+## Installation
 
-### Prasyarat
+### Prerequisites
 
 - Python 3.8+
-- Webcam / Kamera USB
+- Webcam / USB Camera
 
-### Langkah Instalasi
+### Installation Steps
 
 ```bash
-# 1. Clone repository
+# 1. Clone the repository
 git clone https://github.com/zahidan-del/yolov8-electronic-component-detection.git
 cd yolov8-electronic-component-detection
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Download model best.pt
-# Download dari Releases lalu letakkan di folder models/
+# 3. Download the best.pt model
+# Download from Releases and place it in the models/ folder
 ```
 
 ---
 
-## Cara Penggunaan
+## How to Use
 
 ```bash
 python src/main.py
@@ -145,16 +148,16 @@ python src/main.py
 
 ### Tab 1 - Realtime Detection
 
-1. Pilih kamera dari dropdown
-2. Klik Start Detection untuk memulai deteksi realtime
-3. Klik Stop untuk menghentikan
+1. Select a camera from the dropdown
+2. Click Start Detection to begin realtime detection
+3. Click Stop to halt detection
 
 ### Tab 2 - Component Counter
 
-1. Pilih kamera dari dropdown
-2. Klik Start Camera Feed untuk menyalakan kamera
-3. Klik Take Frame untuk mengambil snapshot
-4. Klik Count Components untuk menghitung komponen
+1. Select a camera from the dropdown
+2. Click Start Camera Feed to turn on the camera
+3. Click Take Frame to capture a snapshot
+4. Click Count Components to count the detected components
 
 ---
 
@@ -169,17 +172,15 @@ torchvision
 numpy
 ```
 
-Install semua dengan:
+Install all dependencies with:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-
-
 ---
 
-## Referensi
+## References
 
 1. I. Atik, "Classification of Electronic Components Based on Convolutional Neural Network Architecture," Energies, vol. 15, no. 7, 2022.
 2. S. Hozyn, "Convolutional Neural Networks for Classifying Electronic Components," Energies, vol. 16, no. 2, 2023.
@@ -188,4 +189,6 @@ pip install -r requirements.txt
 5. E. Soylu and I. Kaya, "Classification of Electronics Components using Deep Learning," Sakarya Univ. J. Comput. Inf. Sci., vol. 7, no. 1, pp. 36-45, 2024.
 
 ---
+
+
 
